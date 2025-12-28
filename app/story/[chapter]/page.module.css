@@ -1,0 +1,182 @@
+.container {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+}
+
+.headerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.leftPanel {
+  position: sticky;
+  top: 20px;
+}
+
+.rightPanel {
+  min-height: 600px;
+}
+
+.actTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: #5ba0f2;
+  margin-bottom: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 30px rgba(74, 144, 226, 0.6),
+               0 0 60px rgba(74, 144, 226, 0.3);
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 0 30px rgba(74, 144, 226, 0.6),
+                 0 0 60px rgba(74, 144, 226, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(74, 144, 226, 0.8),
+                 0 0 80px rgba(74, 144, 226, 0.5);
+  }
+}
+
+.dialogueContainer,
+.challengeContainer,
+.repairContainer,
+.completeContainer {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.completeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.completeMessage {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 600px;
+}
+
+.completeMessage h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #4a90e2 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.completeMessage p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #e0e0e0;
+  margin-bottom: 16px;
+}
+
+.distanceUpdate {
+  font-size: 20px;
+  font-weight: 600;
+  color: #00ff88 !important;
+  margin: 24px 0 !important;
+}
+
+.continueButton {
+  margin-top: 30px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(74, 144, 226, 0.4);
+  cursor: pointer;
+}
+
+.continueButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(74, 144, 226, 0.6);
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .leftPanel {
+    position: relative;
+    top: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .actTitle {
+    font-size: 20px;
+  }
+
+  .completeMessage {
+    padding: 30px 20px;
+  }
+
+  .completeMessage h2 {
+    font-size: 24px;
+  }
+
+  .completeMessage p {
+    font-size: 16px;
+  }
+
+  .continueButton {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+}

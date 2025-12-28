@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a90e2 0%, #00ff88 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.chapterInfo {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+.distanceInfo {
+  font-weight: 600;
+  color: #00ff88;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 12px;
+  }
+}

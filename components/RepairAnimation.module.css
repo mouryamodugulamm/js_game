@@ -1,0 +1,189 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 300px;
+}
+
+.animation {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 40px;
+}
+
+.sparkles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+  animation: sparkle 2s infinite;
+  animation-delay: var(--delay);
+}
+
+.sparkle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(var(--angle));
+  animation: sparkleLine 2s infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translate(-50%, -50%) translateX(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateX(80px) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateX(100px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkleLine {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.centerGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+.progressContainer {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88 0%, #4a90e2 100%);
+  border-radius: 6px;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressText {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.completeMessage {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00ff88;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+  animation: fadeInScale 0.5s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .animation {
+    width: 150px;
+    height: 150px;
+  }
+
+  .centerGlow {
+    width: 75px;
+    height: 75px;
+  }
+
+  .completeMessage {
+    font-size: 20px;
+  }
+}

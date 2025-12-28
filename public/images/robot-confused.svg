@@ -1,0 +1,45 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Robot Head (tilted) -->
+  <ellipse cx="100" cy="60" rx="50" ry="50" fill="#4a90e2" stroke="#357abd" stroke-width="3" opacity="0.9" transform="rotate(-5 100 60)">
+    <animateTransform attributeName="transform" type="rotate" values="-5 100 60;5 100 60;-5 100 60" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="100" cy="60" rx="50" ry="50" fill="url(#headGradient)" stroke="#357abd" stroke-width="2" transform="rotate(-5 100 60)"/>
+  
+  <!-- Eyes (confused - one raised) -->
+  <ellipse cx="85" cy="48" rx="8" ry="6" fill="#00ff88" opacity="0.8"/>
+  <ellipse cx="115" cy="52" rx="8" ry="6" fill="#00ff88" opacity="0.8"/>
+  <circle cx="85" cy="48" r="4" fill="#ffffff"/>
+  <circle cx="115" cy="52" r="4" fill="#ffffff"/>
+  
+  <!-- Mouth (confused - wavy) -->
+  <path d="M 80 72 Q 90 75 100 73 Q 110 75 120 72" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Body -->
+  <rect x="60" y="110" width="80" height="100" rx="15" fill="#357abd" stroke="#2a5f8f" stroke-width="3" opacity="0.9"/>
+  <rect x="60" y="110" width="80" height="100" rx="15" fill="url(#bodyGradient)" stroke="#2a5f8f" stroke-width="2"/>
+  
+  <!-- Chest Panel (question mark effect) -->
+  <rect x="85" y="140" width="30" height="30" rx="5" fill="rgba(0,255,136,0.3)" stroke="#00ff88" stroke-width="2">
+    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Arms (one up, one down) -->
+  <rect x="25" y="115" width="25" height="70" rx="12" fill="#4a90e2" stroke="#357abd" stroke-width="2" transform="rotate(-20 37.5 150)"/>
+  <rect x="150" y="125" width="25" height="70" rx="12" fill="#4a90e2" stroke="#357abd" stroke-width="2" transform="rotate(10 162.5 160)"/>
+  
+  <!-- Legs -->
+  <rect x="70" y="210" width="25" height="80" rx="12" fill="#357abd" stroke="#2a5f8f" stroke-width="2"/>
+  <rect x="105" y="210" width="25" height="80" rx="12" fill="#357abd" stroke="#2a5f8f" stroke-width="2"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="headGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5ba0f2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357abd;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a5f8f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.robot {
+  width: 200px;
+  height: 300px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robotImage {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.3));
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Robot image styles are now handled by the SVG files */
+
+.repairing .robotImage {
+  animation: repairGlow 1s infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes repairGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.8));
+  }
+}
+
+.repairOverlay {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.repairProgress {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88 0%, #4a90e2 100%);
+  border-radius: 4px;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.repairText {
+  font-size: 16px;
+  color: #00ff88;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+@media (max-width: 768px) {
+  .robot {
+    width: 150px;
+    height: 225px;
+  }
+
+  .head {
+    width: 90px;
+    height: 90px;
+  }
+
+  .body {
+    width: 105px;
+    height: 90px;
+  }
+
+  .arm {
+    width: 15px;
+    height: 60px;
+  }
+
+  .leg {
+    width: 20px;
+    height: 75px;
+  }
+}
