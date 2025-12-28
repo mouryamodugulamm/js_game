@@ -2,7 +2,7 @@
 
 import { useRouter, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { getChapter, getNextChapterId, storyChapters } from '@/data/storyChapters';
+import { getChapter, getNextChapterId, getPreviousChapterId, storyChapters } from '@/data/storyChapters';
 import StoryDialogue from '@/components/StoryDialogue';
 import Robot from '@/components/Robot';
 import CodeRunner from '@/components/CodeRunner';
@@ -128,6 +128,15 @@ export default function ChapterPage() {
     }
   };
 
+  // Calculate previous chapter ID once
+  const prevChapterId = getPreviousChapterId(chapterId);
+
+  const handlePreviousChapter = () => {
+    if (prevChapterId !== null) {
+      router.push(`/story/${prevChapterId}`);
+    }
+  };
+
   const handleSave = () => {
     saveGameState({
       chapter: chapterId,
@@ -238,12 +247,24 @@ export default function ChapterPage() {
                 <p className={styles.distanceUpdate}>
                   Distance to home: {chapter.distanceToHome} light-years
                 </p>
-                <button 
-                  className={styles.continueButton}
-                  onClick={handleContinue}
-                >
-                  Continue Story →
-                </button>
+                <div className={styles.completeActions}>
+                  {prevChapterId !== null && (
+                    <button 
+                      className={styles.previousButton}
+                      onClick={handlePreviousChapter}
+                      type="button"
+                    >
+                      ← Previous Chapter
+                    </button>
+                  )}
+                  <button 
+                    className={styles.continueButton}
+                    onClick={handleContinue}
+                    type="button"
+                  >
+                    Continue Story →
+                  </button>
+                </div>
               </div>
             </div>
           )}

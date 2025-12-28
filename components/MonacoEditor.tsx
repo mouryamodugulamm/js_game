@@ -1,9 +1,23 @@
 'use client';
 
 import { useRef } from 'react';
-import Editor from '@monaco-editor/react';
+import dynamic from 'next/dynamic';
 import type { editor } from 'monaco-editor';
 import styles from './MonacoEditor.module.css';
+
+// Dynamically import Monaco Editor to avoid SSR issues
+const Editor = dynamic(
+  () => import('@monaco-editor/react'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className={styles.loading}>
+        <div className={styles.spinner}></div>
+        <p>Loading editor...</p>
+      </div>
+    ),
+  }
+);
 
 interface MonacoEditorProps {
   value: string;

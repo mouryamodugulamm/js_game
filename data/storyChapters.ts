@@ -58,3 +58,10 @@ export function getNextChapterId(currentId: number): number | null {
   const next = storyChapters.find(ch => ch.id === currentId + 1);
   return next ? next.id : null;
 }
+
+export function getPreviousChapterId(currentId: number): number | null {
+  const current = storyChapters.find(ch => ch.id === currentId);
+  if (!current) return null;
+  const prev = storyChapters.find(ch => ch.id === currentId - 1);
+  return prev ? prev.id : null;
+}
