@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import SaveButton from '@/components/SaveButton';
 import HomeButton from '@/components/HomeButton';
+import MonacoEditor from '@/components/MonacoEditor';
 import styles from './CodeRunner.module.css';
 
 interface CodeChallenge {
@@ -136,13 +137,19 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
 
       <div className={styles.editorContainer}>
         <div className={styles.editorHeader}>
-          <span>Code Editor</span>
-          <button 
-            className={styles.hintButton}
-            onClick={() => setShowHint(!showHint)}
-          >
-            {showHint ? 'Hide' : 'Show'} Hint
-          </button>
+          <div className={styles.editorTitle}>
+            <span className={styles.editorIcon}>💻</span>
+            <span>Code Editor</span>
+            <span className={styles.editorBadge}>JavaScript</span>
+          </div>
+          <div className={styles.editorActions}>
+            <button 
+              className={styles.hintButton}
+              onClick={() => setShowHint(!showHint)}
+            >
+              {showHint ? 'Hide' : 'Show'} Hint
+            </button>
+          </div>
         </div>
         
         {showHint && challenge.hint && (
@@ -151,17 +158,18 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
           </div>
         )}
 
-        <textarea
-          className={styles.editor}
-          value={code}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-            const newCode = e.target.value;
-            setCode(newCode);
-            onCodeChange?.(newCode);
-          }}
-          placeholder="Write your code here..."
-          spellCheck={false}
-        />
+        <div className={styles.monacoWrapper}>
+          <MonacoEditor
+            value={code}
+            onChange={(newCode) => {
+              setCode(newCode);
+              onCodeChange?.(newCode);
+            }}
+            language="javascript"
+            theme="robot-kid-theme"
+            height="450px"
+          />
+        </div>
       </div>
 
       <div className={styles.actions}>
