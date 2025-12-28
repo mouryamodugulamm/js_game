@@ -30,3 +30,5 @@ export default function ProgressTracker({ currentChapter, totalChapters, distanc
     </div>
   );
 }
+
+

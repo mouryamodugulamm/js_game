@@ -63,3 +63,5 @@ Each chapter follows this pattern:
 - Check browser console for any errors
 
 Enjoy learning JavaScript through storytelling! 🚀
+
+
