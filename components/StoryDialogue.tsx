@@ -1,8 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import SaveButton from '@/components/SaveButton';
-import HomeButton from '@/components/HomeButton';
 import styles from './StoryDialogue.module.css';
 
 interface Dialogue {
@@ -86,14 +84,6 @@ export default function StoryDialogue({ dialogues, onComplete, onSave, initialIn
 
   return (
     <div className={styles.container}>
-      <div className={styles.dialogueHeader}>
-        {onSave && (
-          <div className={styles.actionButtons}>
-            <HomeButton />
-            <SaveButton onSave={onSave} />
-          </div>
-        )}
-      </div>
       <div className={`${styles.dialogue} ${isRobot ? styles.robot : isNarrator ? styles.narrator : styles.kid}`}>
         <div className={styles.speaker}>
           {isRobot ? '🤖 Robot' : isNarrator ? '🌌 Narrator' : '👦 Kid'}

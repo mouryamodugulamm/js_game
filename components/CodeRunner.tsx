@@ -1,8 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import SaveButton from '@/components/SaveButton';
-import HomeButton from '@/components/HomeButton';
+import { useState, useEffect, useRef } from 'react';
 import MonacoEditor from '@/components/MonacoEditor';
 import styles from './CodeRunner.module.css';
 
@@ -29,6 +27,7 @@ interface CodeRunnerProps {
 export default function CodeRunner({ challenge, onSuccess, onCodeChange, initialCode, onSave }: CodeRunnerProps) {
   const [code, setCode] = useState(initialCode || challenge.starterCode);
   const [output, setOutput] = useState<string[]>([]);
+  const outputRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (initialCode) {
@@ -39,6 +38,21 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
   const [validation, setValidation] = useState<{ success: boolean; message: string } | null>(null);
   const [showHint, setShowHint] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
+
+  // Auto-scroll to output when it appears
+  useEffect(() => {
+    if ((output.length > 0 || error || validation) && outputRef.current) {
+      // Small delay to ensure DOM is updated
+      setTimeout(() => {
+        outputRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'nearest' 
+        });
+        // Also focus the container for keyboard navigation
+        outputRef.current?.focus();
+      }, 100);
+    }
+  }, [output, error, validation]);
 
   const runCode = () => {
     setOutput([]);
@@ -84,7 +98,7 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
         if (result.success) {
           setTimeout(() => {
             onSuccess();
-          }, 2000);
+          }, 5000); // Wait 5 seconds before moving to next step
         }
       } catch (e: unknown) {
         console.log = originalLog;
@@ -109,14 +123,6 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
 
   return (
     <div className={styles.container}>
-      {onSave && (
-        <div className={styles.actionButtonsContainer}>
-          <div className={styles.actionButtons}>
-            <HomeButton />
-            <SaveButton onSave={onSave} />
-          </div>
-        </div>
-      )}
       <div className={styles.instruction}>
         <h3>🎯 What We're Fixing</h3>
         <p className={styles.goal}>{challenge.shortGoal}</p>
@@ -199,7 +205,11 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
       </div>
 
       {(output.length > 0 || error || validation) && (
-        <div className={styles.outputContainer}>
+        <div 
+          ref={outputRef}
+          className={styles.outputContainer}
+          tabIndex={-1}
+        >
           <div className={styles.outputHeader}>Output</div>
           {error && (
             <div className={styles.error}>
