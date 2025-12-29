@@ -355,6 +355,36 @@
   height: 400px;
 }
 
+.creatorSection {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  animation: fadeInUp 1s ease-out 2s both;
+  opacity: 0.7;
+}
+
+.creatorText {
+  font-size: 15px;
+  color: #a0a0b0;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.supportLink {
+  color: #5ba0f2;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.supportLink:hover {
+  color: #4a90e2;
+  border-bottom-color: rgba(74, 144, 226, 0.5);
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 30px 20px;
@@ -391,5 +421,13 @@
     min-width: auto;
     padding: 18px 24px;
     font-size: 16px;
+  }
+
+  .creatorSection {
+    margin-top: 40px;
+  }
+
+  .creatorText {
+    font-size: 14px;
   }
 }

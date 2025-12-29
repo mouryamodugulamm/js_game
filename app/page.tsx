@@ -103,6 +103,22 @@ export default function Home() {
             {hasSave ? 'Start New Game' : 'Start Story'}
           </button>
         </div>
+
+        <div className={styles.creatorSection}>
+          <p className={styles.creatorText}>
+            Independently created with a passion for learning, storytelling, and code.{' '}
+            Want to connect?{' '}
+            <a 
+              href="https://www.infi-studio.website/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.supportLink}
+            >
+              Visit INFI Studio
+            </a>
+            .
+          </p>
+        </div>
       </div>
     </div>
   );
