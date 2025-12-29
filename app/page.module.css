@@ -1,9 +1,10 @@
 .container {
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 20px;
   background: linear-gradient(135deg, #0a0a1a 0%, #0f0f1e 30%, #1a1a2e 60%, #16213e 100%);
   background-attachment: fixed;
   position: relative;
@@ -86,18 +87,18 @@
 }
 
 .titleContainer {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   position: relative;
 }
 
 .title {
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 800;
   background: linear-gradient(135deg, #5ba0f2 0%, #4a90e2 30%, #00ff88 70%, #00cc6a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   letter-spacing: -1px;
   line-height: 1.1;
   position: relative;
@@ -132,7 +133,7 @@
 }
 
 .subtitle {
-  font-size: 22px;
+  font-size: 16px;
   color: #c0c0d0;
   font-weight: 400;
   letter-spacing: 1px;
@@ -154,7 +155,7 @@
 }
 
 .robotPreview {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,8 +166,8 @@
 .robotPreview::before {
   content: '';
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 220px;
+  height: 220px;
   background: radial-gradient(circle, rgba(74, 144, 226, 0.2) 0%, transparent 70%);
   border-radius: 50%;
   animation: pulseGlow 3s ease-in-out infinite;
@@ -176,8 +177,8 @@
 .robotPreview::after {
   content: '';
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   animation: pulseGlow 3s ease-in-out infinite 1.5s;
@@ -198,7 +199,7 @@
 .robotImage {
   filter: drop-shadow(0 0 40px rgba(74, 144, 226, 0.6)) 
           drop-shadow(0 0 80px rgba(0, 255, 136, 0.3));
-  width: 180px;
+  width: 140px;
   height: auto;
   animation: float 4s ease-in-out infinite;
   position: relative;
@@ -223,7 +224,7 @@
 .actions {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 16px;
   align-items: stretch;
   justify-content: center;
   opacity: 0;
@@ -231,6 +232,7 @@
   width: 100%;
   max-width: 900px;
   animation: fadeInUp 1s ease-out 1.6s both;
+  margin-bottom: 20px;
 }
 
 .actions.visible {
@@ -239,11 +241,11 @@
 
 .savedGameButton {
   flex: 1;
-  min-width: 300px;
-  padding: 20px 28px;
-  font-size: 17px;
+  min-width: 280px;
+  padding: 16px 24px;
+  font-size: 15px;
   font-weight: 600;
-  border-radius: 16px;
+  border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   background: linear-gradient(135deg, rgba(0, 255, 136, 0.25) 0%, rgba(0, 255, 136, 0.12) 100%);
@@ -289,7 +291,7 @@
 }
 
 .savedGameLabel {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 700;
   color: #00ff88;
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
@@ -297,7 +299,7 @@
 }
 
 .savedGameInfo {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   color: #b0ffd0;
   opacity: 0.95;
@@ -306,11 +308,11 @@
 
 .startButton {
   flex: 1;
-  min-width: 300px;
-  padding: 20px 36px;
-  font-size: 20px;
+  min-width: 280px;
+  padding: 16px 32px;
+  font-size: 17px;
   font-weight: 700;
-  border-radius: 16px;
+  border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
@@ -356,17 +358,17 @@
 }
 
 .creatorSection {
-  margin-top: 60px;
-  padding-top: 40px;
+  margin-top: 24px;
+  padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   animation: fadeInUp 1s ease-out 2s both;
   opacity: 0.7;
 }
 
 .creatorText {
-  font-size: 15px;
+  font-size: 13px;
   color: #a0a0b0;
-  line-height: 1.6;
+  line-height: 1.5;
   font-weight: 400;
   letter-spacing: 0.2px;
   max-width: 600px;
@@ -403,10 +405,14 @@
     width: 140px;
   }
 
-  .robotPreview::before,
+  .robotPreview::before {
+    width: 180px;
+    height: 180px;
+  }
+
   .robotPreview::after {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
   }
 
   .actions {
