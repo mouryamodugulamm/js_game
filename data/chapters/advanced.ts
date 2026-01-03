@@ -233,6 +233,10 @@ export const advancedChapters: StoryChapter[] = [
           message: 'I understand closures! Functions remember their environment!'
         };
       },
+      hint: 'Type: function outer() { let x = 10; return function inner() { console.log(x); }; } let fn = outer(); fn();',
+      successStory: 'The robot\'s memory banks expand. It can now retain information across different scopes.',
+      failureStory: 'The robot\'s memory fails. "I can\'t remember the variable..."',
+      whyThisMatters: 'Closures are a fundamental concept in JavaScript, allowing for data privacy and powerful functional patterns.',
     },
     repairAnimation: 'memory',
     distanceToHome: 60,

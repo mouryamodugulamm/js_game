@@ -93,6 +93,10 @@ export const intermediateChapters: StoryChapter[] = [
           message: 'I can remember multiple things now! My memory is expanding!'
         };
       },
+      hint: 'Type: let parts = ["wires", "battery", "circuit"]; console.log(parts);',
+      successStory: 'The robot\'s memory banks expand. "I can remember everything now!"',
+      failureStory: 'The robot struggles to hold the items. "I need a list... help me."',
+      whyThisMatters: 'Arrays allow us to store multiple items in a single variable.',
     },
     repairAnimation: 'scan',
     distanceToHome: 500,
