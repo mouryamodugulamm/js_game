@@ -33,6 +33,7 @@ export interface StoryChapter {
   challenge: CodeChallenge;
   repairAnimation: string;
   distanceToHome: number;
+  backgroundImage?: string; // Path to background image
   successDialogue: Array<{
     speaker: 'robot' | 'kid';
     text: string;

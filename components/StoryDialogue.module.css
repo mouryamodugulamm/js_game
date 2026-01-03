@@ -1,161 +1,163 @@
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.dialogueHeader {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 12px;
-}
-
-.actionButtons {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.dialogue {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
+  z-index: 10;
 }
 
-.dialogue::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes slideIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+.dialogue {
+  background: rgba(16, 18, 27, 0.85);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+/* Sci-fi corners */
+.dialogue::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .robot {
-  border-left: 4px solid #4a90e2;
+  border-left: 4px solid var(--primary-blue);
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.15);
 }
 
 .kid {
   border-left: 4px solid #f39c12;
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.15);
 }
 
 .narrator {
-  border-left: 4px solid #9b59b6;
-  background: linear-gradient(135deg, rgba(155, 89, 182, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border-left: 4px solid var(--accent-purple);
+  box-shadow: 0 0 20px rgba(189, 0, 255, 0.15);
 }
 
 .speaker {
+  font-family: var(--font-display);
   font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #4a90e2;
+  font-weight: 700;
+  margin-bottom: 16px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.robot .speaker {
+  color: var(--primary-blue);
+  text-shadow: 0 0 8px var(--primary-glow);
 }
 
 .kid .speaker {
   color: #f39c12;
+  text-shadow: 0 0 8px rgba(243, 156, 18, 0.5);
 }
 
 .narrator .speaker {
-  color: #9b59b6;
+  color: var(--accent-purple);
+  text-shadow: 0 0 8px rgba(189, 0, 255, 0.5);
 }
 
 .text {
-  font-size: 19px;
-  line-height: 1.8;
-  color: #f0f0f0;
-  min-height: 60px;
-  margin-bottom: 20px;
-  font-weight: 400;
-  letter-spacing: -0.2px;
+  font-family: var(--font-main);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  min-height: 80px;
+  margin-bottom: 24px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
 }
 
 .cursor {
   display: inline-block;
-  width: 2px;
+  width: 8px;
   height: 20px;
-  background: #4a90e2;
+  background: var(--accent-cyan);
   margin-left: 4px;
-  animation: blink 1s infinite;
+  animation: blink 1s steps(2) infinite;
+  vertical-align: middle;
 }
 
 @keyframes blink {
-  0%, 50% {
+
+  0%,
+  100% {
     opacity: 1;
   }
-  51%, 100% {
+
+  50% {
     opacity: 0;
   }
 }
 
 .nextButton {
-  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 700;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.4),
-              0 0 0 0 rgba(74, 144, 226, 0);
-  letter-spacing: 0.3px;
+  background: transparent;
+  color: var(--accent-cyan);
+  padding: 12px 32px;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  float: right;
   position: relative;
   overflow: hidden;
 }
 
-.nextButton::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+.nextButton:hover {
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  text-shadow: 0 0 5px var(--accent-cyan);
 }
 
-.nextButton:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(74, 144, 226, 0.5),
-              0 0 0 4px rgba(74, 144, 226, 0.1);
-}
-
-.nextButton:active:not(:disabled) {
-  transform: translateY(-1px);
-}
-
-.nextButton:active:not(:disabled)::before {
-  width: 300px;
-  height: 300px;
+.nextButton:active {
+  transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
@@ -164,11 +166,11 @@
   }
 
   .dialogue {
-    padding: 20px;
+    padding: 24px;
   }
 
   .text {
-    font-size: 16px;
-    min-height: 50px;
+    font-size: 18px;
+    min-height: 60px;
   }
 }

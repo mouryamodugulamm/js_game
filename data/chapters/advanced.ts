@@ -73,31 +73,31 @@ export const advancedChapters: StoryChapter[] = [
         const hasParam = /callTwice\s*\(\s*fn/.test(code);
         const hasTwoCalls = /fn\s*\(\s*\)/.test(code) && (code.match(/fn\s*\(\s*\)/g) || []).length >= 2;
         const hasCall = /callTwice\s*\(/.test(code);
-        const outputCount = output.filter(line => 
+        const outputCount = output.filter(line =>
           line.toLowerCase().includes('hello')
         ).length;
-        
+
         if (!hasFunction || !hasParam) {
-          return { 
-            success: false, 
-            message: 'Create a function that takes another function: function callTwice(fn)' 
+          return {
+            success: false,
+            message: 'Create a function that takes another function: function callTwice(fn)'
           };
         }
         if (!hasTwoCalls) {
-          return { 
-            success: false, 
-            message: 'Call the function twice inside: fn(); fn();' 
+          return {
+            success: false,
+            message: 'Call the function twice inside: fn(); fn();'
           };
         }
         if (!hasCall || outputCount < 2) {
-          return { 
-            success: false, 
-            message: 'Use it! Call: callTwice(() => console.log("Hello"))' 
+          return {
+            success: false,
+            message: 'Use it! Call: callTwice(() => console.log("Hello"))'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand higher-order functions now! Functions are so powerful!' 
+        return {
+          success: true,
+          message: 'I understand higher-order functions now! Functions are so powerful!'
         };
       },
       hint: 'Type: function callTwice(fn) { fn(); fn(); } callTwice(() => console.log("Hello"));',
@@ -107,6 +107,7 @@ export const advancedChapters: StoryChapter[] = [
     },
     repairAnimation: 'processing',
     distanceToHome: 80,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -202,49 +203,41 @@ export const advancedChapters: StoryChapter[] = [
         const hasX = /let\s+x\s*=/.test(code);
         const hasLogX = /console\.log\s*\(\s*x/.test(code);
         const outputShows10 = output.some(line => line.includes('10'));
-        
+
         if (!hasOuter) {
-          return { 
-            success: false, 
-            message: 'Create outer function: function outer() { ... }' 
+          return {
+            success: false,
+            message: 'Create outer function: function outer() { ... }'
           };
         }
         if (!hasX) {
-          return { 
-            success: false, 
-            message: 'Create variable in outer: let x = 10;' 
+          return {
+            success: false,
+            message: 'Create variable in outer: let x = 10;'
           };
         }
         if (!hasInner || !hasReturn) {
-          return { 
-            success: false, 
-            message: 'Return inner function: return function inner() { ... }' 
+          return {
+            success: false,
+            message: 'Return inner function: return function inner() { ... }'
           };
         }
         if (!hasLogX || !outputShows10) {
-          return { 
-            success: false, 
-            message: 'Inner function should use x: console.log(x); then call it' 
+          return {
+            success: false,
+            message: 'Inner function should use x: console.log(x); then call it'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand closures! Functions remember their environment!' 
+        return {
+          success: true,
+          message: 'I understand closures! Functions remember their environment!'
         };
       },
-      hint: 'Type: function outer() { let x = 10; return function inner() { console.log(x); }; } let fn = outer(); fn();',
-      successStory: 'The robot\'s memory system upgrades. Functions can now remember their context.',
-      failureStory: 'The robot\'s closure handler is confused. "How do functions remember?"',
-      whyThisMatters: 'Closures are powerful! They let functions remember data even after the outer function finishes.',
     },
     repairAnimation: 'memory',
     distanceToHome: 60,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
-      {
-        speaker: 'robot',
-        text: 'I understand closures now! Functions are so smart!',
-        emotion: 'happy',
-      },
       {
         speaker: 'kid',
         text: 'You\'re mastering advanced concepts!',
@@ -323,31 +316,31 @@ export const advancedChapters: StoryChapter[] = [
         const hasObject = /let\s+robot\s*=\s*\{/.test(code);
         const hasDestructure = /\{\s*name\s*,\s*power\s*\}\s*=\s*robot/.test(code);
         const hasLog = /console\.log\s*\(\s*name/.test(code);
-        const outputShowsBoth = output.some(line => 
+        const outputShowsBoth = output.some(line =>
           line.includes('Robot') && line.includes('100')
         );
-        
+
         if (!hasObject) {
-          return { 
-            success: false, 
-            message: 'Create object: let robot = { name: "Robot", power: 100 };' 
+          return {
+            success: false,
+            message: 'Create object: let robot = { name: "Robot", power: 100 };'
           };
         }
         if (!hasDestructure) {
-          return { 
-            success: false, 
-            message: 'Destructure it: let { name, power } = robot;' 
+          return {
+            success: false,
+            message: 'Destructure it: let { name, power } = robot;'
           };
         }
         if (!hasLog || !outputShowsBoth) {
-          return { 
-            success: false, 
-            message: 'Show both values: console.log(name, power)' 
+          return {
+            success: false,
+            message: 'Show both values: console.log(name, power)'
           };
         }
-        return { 
-          success: true, 
-          message: 'Destructuring is so clean! I love this syntax!' 
+        return {
+          success: true,
+          message: 'Destructuring is so clean! I love this syntax!'
         };
       },
       hint: 'Type: let robot = { name: "Robot", power: 100 }; let { name, power } = robot; console.log(name, power);',
@@ -357,6 +350,7 @@ export const advancedChapters: StoryChapter[] = [
     },
     repairAnimation: 'extraction',
     distanceToHome: 50,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -442,31 +436,31 @@ export const advancedChapters: StoryChapter[] = [
         const hasSpread = /\.\.\./.test(code);
         const hasArrays = /\[1\s*,\s*2\]/.test(code) && /\[3\s*,\s*4\]/.test(code);
         const hasCombined = /combined/.test(code);
-        const outputShowsAll = output.some(line => 
+        const outputShowsAll = output.some(line =>
           (line.includes('1') && line.includes('2') && line.includes('3') && line.includes('4'))
         );
-        
+
         if (!hasSpread) {
-          return { 
-            success: false, 
-            message: 'Use spread operator: ... to combine arrays' 
+          return {
+            success: false,
+            message: 'Use spread operator: ... to combine arrays'
           };
         }
         if (!hasArrays) {
-          return { 
-            success: false, 
-            message: 'Create both arrays: [1, 2] and [3, 4]' 
+          return {
+            success: false,
+            message: 'Create both arrays: [1, 2] and [3, 4]'
           };
         }
         if (!hasCombined || !outputShowsAll) {
-          return { 
-            success: false, 
-            message: 'Combine them: [...arr1, ...arr2] and show the result' 
+          return {
+            success: false,
+            message: 'Combine them: [...arr1, ...arr2] and show the result'
           };
         }
-        return { 
-          success: true, 
-          message: 'Spread operator is so powerful! I can combine anything!' 
+        return {
+          success: true,
+          message: 'Spread operator is so powerful! I can combine anything!'
         };
       },
       hint: 'Type: let arr1 = [1, 2]; let arr2 = [3, 4]; let combined = [...arr1, ...arr2]; console.log(combined);',
@@ -476,6 +470,7 @@ export const advancedChapters: StoryChapter[] = [
     },
     repairAnimation: 'combining',
     distanceToHome: 40,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -566,31 +561,31 @@ export const advancedChapters: StoryChapter[] = [
         const hasPromise = /new\s+Promise/.test(code);
         const hasSetTimeout = /setTimeout/.test(code);
         const hasCall = /wait\s*\(/.test(code);
-        const outputShowsDone = output.some(line => 
+        const outputShowsDone = output.some(line =>
           line.toLowerCase().includes('done')
         );
-        
+
         if (!hasAsync) {
-          return { 
-            success: false, 
-            message: 'Create async function: async function wait() { ... }' 
+          return {
+            success: false,
+            message: 'Create async function: async function wait() { ... }'
           };
         }
         if (!hasAwait || !hasPromise) {
-          return { 
-            success: false, 
-            message: 'Wait with: await new Promise(r => setTimeout(r, 1000))' 
+          return {
+            success: false,
+            message: 'Wait with: await new Promise(r => setTimeout(r, 1000))'
           };
         }
         if (!hasCall || !outputShowsDone) {
-          return { 
-            success: false, 
-            message: 'Call the function: wait() and wait for "Done" to appear' 
+          return {
+            success: false,
+            message: 'Call the function: wait() and wait for "Done" to appear'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can handle async operations now! Time doesn\'t freeze anymore!' 
+        return {
+          success: true,
+          message: 'I can handle async operations now! Time doesn\'t freeze anymore!'
         };
       },
       hint: 'Type: async function wait() { await new Promise(r => setTimeout(r, 1000)); console.log("Done"); } wait();',
@@ -600,6 +595,7 @@ export const advancedChapters: StoryChapter[] = [
     },
     repairAnimation: 'async',
     distanceToHome: 30,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -691,37 +687,37 @@ export const advancedChapters: StoryChapter[] = [
         const hasCatch = /catch\s*\(/.test(code);
         const hasRiskyCode = /obj\.missing/.test(code) || /\.property/.test(code);
         const hasErrorLog = /console\.log.*[Ee]rror/.test(code);
-        const outputShowsError = output.some(line => 
+        const outputShowsError = output.some(line =>
           line.toLowerCase().includes('error')
         );
-        
+
         if (!hasTry) {
-          return { 
-            success: false, 
-            message: 'Start try block: try { ... }' 
+          return {
+            success: false,
+            message: 'Start try block: try { ... }'
           };
         }
         if (!hasCatch) {
-          return { 
-            success: false, 
-            message: 'Add catch block: catch(e) { ... }' 
+          return {
+            success: false,
+            message: 'Add catch block: catch(e) { ... }'
           };
         }
         if (!hasRiskyCode) {
-          return { 
-            success: false, 
-            message: 'Try risky code: obj.missing.property' 
+          return {
+            success: false,
+            message: 'Try risky code: obj.missing.property'
           };
         }
         if (!hasErrorLog || !outputShowsError) {
-          return { 
-            success: false, 
-            message: 'Log the error: console.log("Error:", e.message)' 
+          return {
+            success: false,
+            message: 'Log the error: console.log("Error:", e.message)'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can handle errors now! I won\'t crash anymore!' 
+        return {
+          success: true,
+          message: 'I can handle errors now! I won\'t crash anymore!'
         };
       },
       hint: 'Type: try { let obj = {}; console.log(obj.missing.property); } catch(e) { console.log("Error:", e.message); }',
@@ -731,6 +727,7 @@ export const advancedChapters: StoryChapter[] = [
     },
     repairAnimation: 'error-handling',
     distanceToHome: 20,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -750,4 +747,6 @@ export const advancedChapters: StoryChapter[] = [
     ],
   },
 ];
+
+
 

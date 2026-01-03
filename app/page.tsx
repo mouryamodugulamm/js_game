@@ -73,10 +73,10 @@ export default function Home() {
 
         <div className={styles.robotPreview}>
           <Image
-            src="/images/robot-neutral.svg"
+            src="/images/robo_neutral.png"
             alt="Robot"
-            width={150}
-            height={225}
+            width={400}
+            height={500}
             className={styles.robotImage}
             priority
           />

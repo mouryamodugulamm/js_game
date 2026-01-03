@@ -66,46 +66,38 @@ export const intermediateChapters: StoryChapter[] = [
         const hasArray = /let\s+parts\s*=\s*\[/.test(code);
         const hasItems = code.includes('wires') && code.includes('battery');
         const hasLog = code.includes('console.log(parts)');
-        const outputShowsArray = output.some(line => 
+        const outputShowsArray = output.some(line =>
           line.includes('wires') || line.includes('battery')
         );
-        
+
         if (!hasArray) {
-          return { 
-            success: false, 
-            message: 'I need a list! Create: let parts = ["wires", "battery", "circuit"];' 
+          return {
+            success: false,
+            message: 'I need a list! Create: let parts = ["wires", "battery", "circuit"];'
           };
         }
         if (!hasItems) {
-          return { 
-            success: false, 
-            message: 'Put the parts in the list: "wires", "battery", "circuit"' 
+          return {
+            success: false,
+            message: 'Put the parts in the list: "wires", "battery", "circuit"'
           };
         }
         if (!hasLog || !outputShowsArray) {
-          return { 
-            success: false, 
-            message: 'Show me the list! Use: console.log(parts)' 
+          return {
+            success: false,
+            message: 'Show me the list! Use: console.log(parts)'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can remember multiple things now! My memory is expanding!' 
+        return {
+          success: true,
+          message: 'I can remember multiple things now! My memory is expanding!'
         };
       },
-      hint: 'Type: let parts = ["wires", "battery", "circuit"]; console.log(parts);',
-      successStory: 'The robot\'s memory banks light up. It can now store multiple pieces of information.',
-      failureStory: 'The robot\'s memory flickers. "I\'m trying to remember... help me organize it."',
-      whyThisMatters: 'Without arrays, I can only remember one thing at a time. Lists help me organize everything.',
     },
-    repairAnimation: 'memory',
+    repairAnimation: 'scan',
     distanceToHome: 500,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
-      {
-        speaker: 'robot',
-        text: 'I can remember lists now! This is so much better!',
-        emotion: 'happy',
-      },
       {
         speaker: 'kid',
         text: 'You\'re learning so fast!',
@@ -191,31 +183,31 @@ export const intermediateChapters: StoryChapter[] = [
         const hasName = /name\s*:\s*"Robot"/.test(code);
         const hasPower = /power\s*:\s*100/.test(code);
         const hasAccess = /robot\.name/.test(code);
-        const outputShowsName = output.some(line => 
+        const outputShowsName = output.some(line =>
           line.toLowerCase().includes('robot')
         );
-        
+
         if (!hasObject) {
-          return { 
-            success: false, 
-            message: 'I need an object! Create: let robot = { ... }' 
+          return {
+            success: false,
+            message: 'I need an object! Create: let robot = { ... }'
           };
         }
         if (!hasName || !hasPower) {
-          return { 
-            success: false, 
-            message: 'Add my info: name: "Robot", power: 100' 
+          return {
+            success: false,
+            message: 'Add my info: name: "Robot", power: 100'
           };
         }
         if (!hasAccess || !outputShowsName) {
-          return { 
-            success: false, 
-            message: 'Show my name! Use: console.log(robot.name)' 
+          return {
+            success: false,
+            message: 'Show my name! Use: console.log(robot.name)'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can organize my data now! Everything has its place!' 
+        return {
+          success: true,
+          message: 'I can organize my data now! Everything has its place!'
         };
       },
       hint: 'Type: let robot = { name: "Robot", power: 100, status: "repairing" }; console.log(robot.name);',
@@ -225,6 +217,7 @@ export const intermediateChapters: StoryChapter[] = [
     },
     repairAnimation: 'organization',
     distanceToHome: 400,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -311,37 +304,37 @@ export const intermediateChapters: StoryChapter[] = [
         const hasMap = /\.map\s*\(/.test(code);
         const hasArrow = /=>/.test(code);
         const hasMultiply = /\*\s*2/.test(code);
-        const outputShowsDoubled = output.some(line => 
+        const outputShowsDoubled = output.some(line =>
           line.includes('2') && line.includes('4') && line.includes('6')
         );
-        
+
         if (!hasMap) {
-          return { 
-            success: false, 
-            message: 'I need map! Use: numbers.map(...)' 
+          return {
+            success: false,
+            message: 'I need map! Use: numbers.map(...)'
           };
         }
         if (!hasArrow) {
-          return { 
-            success: false, 
-            message: 'Use arrow function: num => num * 2' 
+          return {
+            success: false,
+            message: 'Use arrow function: num => num * 2'
           };
         }
         if (!hasMultiply) {
-          return { 
-            success: false, 
-            message: 'Double each number: num => num * 2' 
+          return {
+            success: false,
+            message: 'Double each number: num => num * 2'
           };
         }
         if (!outputShowsDoubled) {
-          return { 
-            success: false, 
-            message: 'I should see [2, 4, 6] in the output!' 
+          return {
+            success: false,
+            message: 'I should see [2, 4, 6] in the output!'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can transform arrays now! This is powerful!' 
+        return {
+          success: true,
+          message: 'I can transform arrays now! This is powerful!'
         };
       },
       hint: 'Type: let numbers = [1, 2, 3]; let doubled = numbers.map(num => num * 2); console.log(doubled);',
@@ -351,6 +344,7 @@ export const intermediateChapters: StoryChapter[] = [
     },
     repairAnimation: 'processing',
     distanceToHome: 300,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -437,37 +431,37 @@ export const intermediateChapters: StoryChapter[] = [
         const hasFilter = /\.filter\s*\(/.test(code);
         const hasArrow = /=>/.test(code);
         const hasGreaterThan = />\s*10/.test(code);
-        const outputShowsFiltered = output.some(line => 
+        const outputShowsFiltered = output.some(line =>
           (line.includes('15') && line.includes('20')) && !line.includes('1') && !line.includes('5')
         );
-        
+
         if (!hasFilter) {
-          return { 
-            success: false, 
-            message: 'I need filter! Use: numbers.filter(...)' 
+          return {
+            success: false,
+            message: 'I need filter! Use: numbers.filter(...)'
           };
         }
         if (!hasArrow) {
-          return { 
-            success: false, 
-            message: 'Use arrow function: num => num > 10' 
+          return {
+            success: false,
+            message: 'Use arrow function: num => num > 10'
           };
         }
         if (!hasGreaterThan) {
-          return { 
-            success: false, 
-            message: 'Test if bigger: num => num > 10' 
+          return {
+            success: false,
+            message: 'Test if bigger: num => num > 10'
           };
         }
         if (!outputShowsFiltered) {
-          return { 
-            success: false, 
-            message: 'I should only see [15, 20] - numbers bigger than 10!' 
+          return {
+            success: false,
+            message: 'I should only see [15, 20] - numbers bigger than 10!'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can filter data now! Only what I need!' 
+        return {
+          success: true,
+          message: 'I can filter data now! Only what I need!'
         };
       },
       hint: 'Type: let numbers = [1, 5, 10, 15, 20]; let big = numbers.filter(num => num > 10); console.log(big);',
@@ -477,6 +471,7 @@ export const intermediateChapters: StoryChapter[] = [
     },
     repairAnimation: 'filtering',
     distanceToHome: 250,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -560,34 +555,34 @@ export const intermediateChapters: StoryChapter[] = [
       validate: (code: string, output: string[]) => {
         const hasToUpperCase = /\.toUpperCase\s*\(/.test(code);
         const hasIncludes = /\.includes\s*\(/.test(code);
-        const outputShowsUpper = output.some(line => 
+        const outputShowsUpper = output.some(line =>
           line.includes('HELLO') || line.includes('ROBOT')
         );
-        const outputShowsTrue = output.some(line => 
+        const outputShowsTrue = output.some(line =>
           line.toLowerCase().includes('true')
         );
-        
+
         if (!hasToUpperCase) {
-          return { 
-            success: false, 
-            message: 'Make it uppercase! Use: text.toUpperCase()' 
+          return {
+            success: false,
+            message: 'Make it uppercase! Use: text.toUpperCase()'
           };
         }
         if (!hasIncludes) {
-          return { 
-            success: false, 
-            message: 'Check if it includes! Use: text.includes("robot")' 
+          return {
+            success: false,
+            message: 'Check if it includes! Use: text.includes("robot")'
           };
         }
         if (!outputShowsUpper || !outputShowsTrue) {
-          return { 
-            success: false, 
-            message: 'I should see "HELLO ROBOT" and "true" in the output!' 
+          return {
+            success: false,
+            message: 'I should see "HELLO ROBOT" and "true" in the output!'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can work with text now! Strings are powerful!' 
+        return {
+          success: true,
+          message: 'I can work with text now! Strings are powerful!'
         };
       },
       hint: 'Type: let text = "hello robot"; console.log(text.toUpperCase()); console.log(text.includes("robot"));',
@@ -597,6 +592,7 @@ export const intermediateChapters: StoryChapter[] = [
     },
     repairAnimation: 'text-processing',
     distanceToHome: 200,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -683,34 +679,34 @@ export const intermediateChapters: StoryChapter[] = [
         const hasAdd = /a\s*\+\s*b/.test(code);
         const hasCall = /add\s*\(/.test(code);
         const outputShows5 = output.some(line => line.includes('5'));
-        
+
         if (!hasArrow) {
-          return { 
-            success: false, 
-            message: 'I need an arrow function! Use: (a, b) => ...' 
+          return {
+            success: false,
+            message: 'I need an arrow function! Use: (a, b) => ...'
           };
         }
         if (!hasParams) {
-          return { 
-            success: false, 
-            message: 'Add parameters: (a, b)' 
+          return {
+            success: false,
+            message: 'Add parameters: (a, b)'
           };
         }
         if (!hasAdd) {
-          return { 
-            success: false, 
-            message: 'Add them together: a + b' 
+          return {
+            success: false,
+            message: 'Add them together: a + b'
           };
         }
         if (!hasCall || !outputShows5) {
-          return { 
-            success: false, 
-            message: 'Use the function! Call: add(2, 3) and show the result' 
+          return {
+            success: false,
+            message: 'Use the function! Call: add(2, 3) and show the result'
           };
         }
-        return { 
-          success: true, 
-          message: 'Arrow functions are so clean! I love this syntax!' 
+        return {
+          success: true,
+          message: 'Arrow functions are so clean! I love this syntax!'
         };
       },
       hint: 'Type: const add = (a, b) => a + b; console.log(add(2, 3));',
@@ -720,6 +716,7 @@ export const intermediateChapters: StoryChapter[] = [
     },
     repairAnimation: 'syntax',
     distanceToHome: 150,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -810,29 +807,29 @@ export const intermediateChapters: StoryChapter[] = [
         const hasInside = /let\s+inside/.test(code);
         const hasOutside = /let\s+outside/.test(code);
         const hasLogOutside = /console\.log\s*\(\s*outside/.test(code);
-        
+
         if (!hasBlock || !hasInside) {
-          return { 
-            success: false, 
-            message: 'Create a variable inside a block: { let inside = "I\'m inside"; }' 
+          return {
+            success: false,
+            message: 'Create a variable inside a block: { let inside = "I\'m inside"; }'
           };
         }
         if (!hasOutside) {
-          return { 
-            success: false, 
-            message: 'Create a variable outside: let outside = "I\'m outside";' 
+          return {
+            success: false,
+            message: 'Create a variable outside: let outside = "I\'m outside";'
           };
         }
         if (!hasLogOutside) {
-          return { 
-            success: false, 
-            message: 'Log the outside variable: console.log(outside)' 
+          return {
+            success: false,
+            message: 'Log the outside variable: console.log(outside)'
           };
         }
         // Note: inside variable won't be accessible, but that's the lesson
-        return { 
-          success: true, 
-          message: 'I understand scope now! Variables have their own spaces!' 
+        return {
+          success: true,
+          message: 'I understand scope now! Variables have their own spaces!'
         };
       },
       hint: 'Type: { let inside = "I\'m inside"; } let outside = "I\'m outside"; console.log(outside);',
@@ -842,6 +839,7 @@ export const intermediateChapters: StoryChapter[] = [
     },
     repairAnimation: 'organization',
     distanceToHome: 100,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -861,4 +859,6 @@ export const intermediateChapters: StoryChapter[] = [
     ],
   },
 ];
+
+
 

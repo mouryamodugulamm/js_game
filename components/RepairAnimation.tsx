@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import styles from './RepairAnimation.module.css';
 
 interface RepairAnimationProps {
@@ -51,6 +52,18 @@ export default function RepairAnimation({ type, onComplete }: RepairAnimationPro
 
   return (
     <div className={styles.container}>
+      {type === 'launch' && (
+        <div className={styles.rocketContainer}>
+          <Image
+            src="/images/rocket_image.png"
+            alt="Rocket"
+            width={200}
+            height={300}
+            className={styles.rocketImage}
+            priority
+          />
+        </div>
+      )}
       <div className={styles.animation}>
         <div className={styles.sparkles}>
           {[...Array(12)].map((_, i) => (
@@ -87,5 +100,6 @@ export default function RepairAnimation({ type, onComplete }: RepairAnimationPro
     </div>
   );
 }
+
 
 

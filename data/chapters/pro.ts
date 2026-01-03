@@ -71,31 +71,31 @@ export const proChapters: StoryChapter[] = [
         const hasResolve = /resolve\s*\(/.test(code);
         const hasSetTimeout = /setTimeout/.test(code);
         const hasThen = /\.then\s*\(/.test(code);
-        const outputShowsSuccess = output.some(line => 
+        const outputShowsSuccess = output.some(line =>
           line.toLowerCase().includes('success')
         );
-        
+
         if (!hasPromise) {
-          return { 
-            success: false, 
-            message: 'Create a Promise: new Promise((resolve) => { ... })' 
+          return {
+            success: false,
+            message: 'Create a Promise: new Promise((resolve) => { ... })'
           };
         }
         if (!hasResolve || !hasSetTimeout) {
-          return { 
-            success: false, 
-            message: 'Resolve after timeout: setTimeout(() => resolve("Success"), 1000)' 
+          return {
+            success: false,
+            message: 'Resolve after timeout: setTimeout(() => resolve("Success"), 1000)'
           };
         }
         if (!hasThen || !outputShowsSuccess) {
-          return { 
-            success: false, 
-            message: 'Handle the result: .then(console.log) and wait for "Success"' 
+          return {
+            success: false,
+            message: 'Handle the result: .then(console.log) and wait for "Success"'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand Promises now! They\'re the foundation of async JavaScript!' 
+        return {
+          success: true,
+          message: 'I understand Promises now! They\'re the foundation of async JavaScript!'
         };
       },
       hint: 'Type: new Promise((resolve) => { setTimeout(() => resolve("Success"), 1000); }).then(console.log);',
@@ -105,6 +105,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'promises',
     distanceToHome: 15,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -200,37 +201,37 @@ export const proChapters: StoryChapter[] = [
         const hasThis = /this\.name/.test(code);
         const hasMethod = /speak\s*\(/.test(code);
         const hasNew = /new\s+Robot/.test(code);
-        const outputShowsSpeaks = output.some(line => 
+        const outputShowsSpeaks = output.some(line =>
           line.toLowerCase().includes('speaks')
         );
-        
+
         if (!hasClass) {
-          return { 
-            success: false, 
-            message: 'Create a class: class Robot { ... }' 
+          return {
+            success: false,
+            message: 'Create a class: class Robot { ... }'
           };
         }
         if (!hasConstructor || !hasThis) {
-          return { 
-            success: false, 
-            message: 'Add constructor: constructor(name) { this.name = name; }' 
+          return {
+            success: false,
+            message: 'Add constructor: constructor(name) { this.name = name; }'
           };
         }
         if (!hasMethod) {
-          return { 
-            success: false, 
-            message: 'Add method: speak() { console.log(this.name + " speaks"); }' 
+          return {
+            success: false,
+            message: 'Add method: speak() { console.log(this.name + " speaks"); }'
           };
         }
         if (!hasNew || !outputShowsSpeaks) {
-          return { 
-            success: false, 
-            message: 'Create instance: new Robot("Robo") and call r.speak()' 
+          return {
+            success: false,
+            message: 'Create instance: new Robot("Robo") and call r.speak()'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand classes now! I can create blueprints for objects!' 
+        return {
+          success: true,
+          message: 'I understand classes now! I can create blueprints for objects!'
         };
       },
       hint: 'Type: class Robot { constructor(name) { this.name = name; } speak() { console.log(this.name + " speaks"); } } let r = new Robot("Robo"); r.speak();',
@@ -240,6 +241,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'classes',
     distanceToHome: 10,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -332,31 +334,31 @@ export const proChapters: StoryChapter[] = [
         const hasPrototype = /Robot\.prototype/.test(code);
         const hasSpeak = /\.speak\s*=/.test(code);
         const hasNew = /new\s+Robot/.test(code);
-        const outputShowsName = output.some(line => 
+        const outputShowsName = output.some(line =>
           line.toLowerCase().includes('robo')
         );
-        
+
         if (!hasConstructor) {
-          return { 
-            success: false, 
-            message: 'Create constructor: function Robot(name) { this.name = name; }' 
+          return {
+            success: false,
+            message: 'Create constructor: function Robot(name) { this.name = name; }'
           };
         }
         if (!hasPrototype || !hasSpeak) {
-          return { 
-            success: false, 
-            message: 'Add to prototype: Robot.prototype.speak = function() { ... }' 
+          return {
+            success: false,
+            message: 'Add to prototype: Robot.prototype.speak = function() { ... }'
           };
         }
         if (!hasNew || !outputShowsName) {
-          return { 
-            success: false, 
-            message: 'Create instance: new Robot("Robo") and call r.speak()' 
+          return {
+            success: false,
+            message: 'Create instance: new Robot("Robo") and call r.speak()'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand prototypes now! This is how JavaScript really works!' 
+        return {
+          success: true,
+          message: 'I understand prototypes now! This is how JavaScript really works!'
         };
       },
       hint: 'Type: function Robot(name) { this.name = name; } Robot.prototype.speak = function() { console.log(this.name); }; let r = new Robot("Robo"); r.speak();',
@@ -366,6 +368,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'prototypes',
     distanceToHome: 8,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -454,34 +457,34 @@ export const proChapters: StoryChapter[] = [
         const hasAcc = /acc\s*\+\s*num/.test(code);
         const hasStart = /,\s*0\s*\)/.test(code);
         const outputShows10 = output.some(line => line.includes('10'));
-        
+
         if (!hasReduce) {
-          return { 
-            success: false, 
-            message: 'Use reduce: numbers.reduce(...)' 
+          return {
+            success: false,
+            message: 'Use reduce: numbers.reduce(...)'
           };
         }
         if (!hasArrow || !hasAcc) {
-          return { 
-            success: false, 
-            message: 'Add numbers: (acc, num) => acc + num' 
+          return {
+            success: false,
+            message: 'Add numbers: (acc, num) => acc + num'
           };
         }
         if (!hasStart) {
-          return { 
-            success: false, 
-            message: 'Start with 0: , 0)' 
+          return {
+            success: false,
+            message: 'Start with 0: , 0)'
           };
         }
         if (!outputShows10) {
-          return { 
-            success: false, 
-            message: 'I should see 10 (1+2+3+4) in the output!' 
+          return {
+            success: false,
+            message: 'I should see 10 (1+2+3+4) in the output!'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand reduce now! I can combine arrays into single values!' 
+        return {
+          success: true,
+          message: 'I understand reduce now! I can combine arrays into single values!'
         };
       },
       hint: 'Type: let numbers = [1, 2, 3, 4]; let sum = numbers.reduce((acc, num) => acc + num, 0); console.log(sum);',
@@ -491,6 +494,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'reducing',
     distanceToHome: 5,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -585,34 +589,34 @@ export const proChapters: StoryChapter[] = [
         const hasCall = /countdown\s*\(\s*5/.test(code);
         const numbers = output.filter(line => /^\d+$/.test(line.trim())).map(line => parseInt(line.trim()));
         const hasAllNumbers = [5, 4, 3, 2, 1].every(n => numbers.includes(n));
-        
+
         if (!hasFunction) {
-          return { 
-            success: false, 
-            message: 'Create function: function countdown(n) { ... }' 
+          return {
+            success: false,
+            message: 'Create function: function countdown(n) { ... }'
           };
         }
         if (!hasBaseCase || !hasReturn) {
-          return { 
-            success: false, 
-            message: 'Add base case: if (n <= 0) return;' 
+          return {
+            success: false,
+            message: 'Add base case: if (n <= 0) return;'
           };
         }
         if (!hasRecurse) {
-          return { 
-            success: false, 
-            message: 'Call itself: countdown(n - 1);' 
+          return {
+            success: false,
+            message: 'Call itself: countdown(n - 1);'
           };
         }
         if (!hasCall || !hasAllNumbers) {
-          return { 
-            success: false, 
-            message: 'Call countdown(5) and see 5, 4, 3, 2, 1 in output' 
+          return {
+            success: false,
+            message: 'Call countdown(5) and see 5, 4, 3, 2, 1 in output'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand recursion now! Functions can solve problems by calling themselves!' 
+        return {
+          success: true,
+          message: 'I understand recursion now! Functions can solve problems by calling themselves!'
         };
       },
       hint: 'Type: function countdown(n) { if (n <= 0) return; console.log(n); countdown(n - 1); } countdown(5);',
@@ -622,6 +626,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'recursion',
     distanceToHome: 3,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -708,31 +713,31 @@ export const proChapters: StoryChapter[] = [
         const hasFunction = /function\s+handleClick/.test(code);
         const hasLog = /console\.log\s*\(\s*"Clicked!"/.test(code);
         const hasCall = /handleClick\s*\(/.test(code);
-        const outputShowsClicked = output.some(line => 
+        const outputShowsClicked = output.some(line =>
           line.toLowerCase().includes('clicked')
         );
-        
+
         if (!hasFunction) {
-          return { 
-            success: false, 
-            message: 'Create handler: function handleClick() { ... }' 
+          return {
+            success: false,
+            message: 'Create handler: function handleClick() { ... }'
           };
         }
         if (!hasLog) {
-          return { 
-            success: false, 
-            message: 'Respond to event: console.log("Clicked!")' 
+          return {
+            success: false,
+            message: 'Respond to event: console.log("Clicked!")'
           };
         }
         if (!hasCall || !outputShowsClicked) {
-          return { 
-            success: false, 
-            message: 'Call the handler: handleClick() and see "Clicked!"' 
+          return {
+            success: false,
+            message: 'Call the handler: handleClick() and see "Clicked!"'
           };
         }
-        return { 
-          success: true, 
-          message: 'I understand event handling now! I can respond to user actions!' 
+        return {
+          success: true,
+          message: 'I understand event handling now! I can respond to user actions!'
         };
       },
       hint: 'Type: function handleClick() { console.log("Clicked!"); } handleClick();',
@@ -742,6 +747,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'events',
     distanceToHome: 0,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -817,26 +823,26 @@ export const proChapters: StoryChapter[] = [
 `,
       validate: (code: string, output: string[]) => {
         const hasConsoleLog = code.includes('console.log');
-        const outputShowsGoodbye = output.some(line => 
-          line.toLowerCase().includes('goodbye') || 
+        const outputShowsGoodbye = output.some(line =>
+          line.toLowerCase().includes('goodbye') ||
           line.toLowerCase().includes('safe journey')
         );
-        
+
         if (!hasConsoleLog) {
-          return { 
-            success: false, 
-            message: 'Say it out loud! Use console.log("your message")' 
+          return {
+            success: false,
+            message: 'Say it out loud! Use console.log("your message")'
           };
         }
         if (!outputShowsGoodbye) {
-          return { 
-            success: false, 
-            message: 'I want to hear your goodbye...' 
+          return {
+            success: false,
+            message: 'I want to hear your goodbye...'
           };
         }
-        return { 
-          success: true, 
-          message: 'Thank you, friend. I\'ll never forget you. 🌟' 
+        return {
+          success: true,
+          message: 'Thank you, friend. I\'ll never forget you. 🌟'
         };
       },
       hint: 'Type: console.log("Goodbye, Robot! Safe journey!");',
@@ -846,6 +852,7 @@ export const proChapters: StoryChapter[] = [
     },
     repairAnimation: 'launch',
     distanceToHome: 0,
+    backgroundImage: '/images/bg_space.png',
     successDialogue: [
       {
         speaker: 'robot',

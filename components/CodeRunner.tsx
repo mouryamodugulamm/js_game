@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import MonacoEditor from '@/components/MonacoEditor';
+import MonacoEditor from './MonacoEditor';
 import styles from './CodeRunner.module.css';
+import SoundManager, { SOUNDS } from '@/utils/soundManager';
 
 interface CodeChallenge {
   id: string;
@@ -44,9 +45,9 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
     if ((output.length > 0 || error || validation) && outputRef.current) {
       // Small delay to ensure DOM is updated
       setTimeout(() => {
-        outputRef.current?.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'nearest' 
+        outputRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest'
         });
         // Also focus the container for keyboard navigation
         outputRef.current?.focus();
@@ -54,7 +55,8 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
     }
   }, [output, error, validation]);
 
-  const runCode = () => {
+  const handleRunCode = () => {
+    SoundManager.getInstance().play(SOUNDS.CLICK);
     setOutput([]);
     setError('');
     setValidation(null);
@@ -66,7 +68,7 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
       const logs: string[] = [];
       const originalLog = console.log;
       console.log = (...args: unknown[]) => {
-        logs.push(args.map((arg: unknown) => 
+        logs.push(args.map((arg: unknown) =>
           typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
         ).join(' '));
         originalLog(...args);
@@ -76,18 +78,18 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
         // Create a safe execution context
         const func = new Function(code);
         func();
-        
+
         // Restore console.log
         console.log = originalLog;
 
         // Validate the code
         const result = challenge.validate(code, logs);
-        
+
         // Add narrative story context
         const fullMessage = result.success
           ? `${result.message}\n\n${challenge.successStory}`
           : `${result.message}\n\n${challenge.failureStory}`;
-        
+
         setValidation({
           ...result,
           message: fullMessage
@@ -96,9 +98,12 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
         setIsRunning(false);
 
         if (result.success) {
+          SoundManager.getInstance().play(SOUNDS.SUCCESS);
           setTimeout(() => {
             onSuccess();
           }, 5000); // Wait 5 seconds before moving to next step
+        } else {
+          SoundManager.getInstance().play(SOUNDS.FAILURE);
         }
       } catch (e: unknown) {
         console.log = originalLog;
@@ -113,12 +118,21 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
     }, 300);
   };
 
-  const resetCode = () => {
-    setCode(challenge.starterCode);
-    setOutput([]);
-    setError('');
-    setValidation(null);
-    setShowHint(false);
+  const handleReset = () => {
+    SoundManager.getInstance().play(SOUNDS.CLICK);
+    if (confirm('Are you sure you want to reset your code? This cannot be undone.')) {
+      setCode(challenge.starterCode);
+      onCodeChange?.(challenge.starterCode); // Call onCodeChange if it exists
+      setOutput([]);
+      setError('');
+      setValidation(null);
+      setShowHint(false);
+    }
+  };
+
+  const toggleHint = () => {
+    SoundManager.getInstance().play(SOUNDS.CLICK);
+    setShowHint(!showHint);
   };
 
   return (
@@ -126,7 +140,7 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
       <div className={styles.instruction}>
         <h3>🎯 What We're Fixing</h3>
         <p className={styles.goal}>{challenge.shortGoal}</p>
-        
+
         <div className={styles.whyMatters}>
           <p className={styles.whyText}>💭 {challenge.whyThisMatters}</p>
         </div>
@@ -149,15 +163,17 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
             <span className={styles.editorBadge}>JavaScript</span>
           </div>
           <div className={styles.editorActions}>
-            <button 
-              className={styles.hintButton}
-              onClick={() => setShowHint(!showHint)}
-            >
-              {showHint ? 'Hide' : 'Show'} Hint
-            </button>
+            {challenge.hint && (
+              <button
+                className={styles.hintButton}
+                onClick={toggleHint}
+              >
+                {showHint ? 'Hide Hint' : 'Need a Hint?'}
+              </button>
+            )}
           </div>
         </div>
-        
+
         {showHint && challenge.hint && (
           <div className={styles.hint}>
             💡 Hint: {challenge.hint}
@@ -179,9 +195,9 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
       </div>
 
       <div className={styles.actions}>
-        <button 
+        <button
           className={styles.runButton}
-          onClick={runCode}
+          onClick={handleRunCode}
           disabled={isRunning}
         >
           {isRunning ? (
@@ -195,17 +211,17 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
             </>
           )}
         </button>
-        <button 
+        <button
           className={styles.resetButton}
-          onClick={resetCode}
+          onClick={handleReset}
           disabled={isRunning}
         >
-          ↻ Try Again
+          ↻ Reset Code
         </button>
       </div>
 
       {(output.length > 0 || error || validation) && (
-        <div 
+        <div
           ref={outputRef}
           className={styles.outputContainer}
           tabIndex={-1}

@@ -67,7 +67,7 @@ export default function CompletePage() {
 
         <div className={styles.robotFinal}>
           <Image
-            src="/images/robot-excited.svg"
+            src="/images/robo_neutral.png"
             alt="Robot"
             width={200}
             height={300}

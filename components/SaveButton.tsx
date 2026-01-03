@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './SaveButton.module.css';
+import SoundManager, { SOUNDS } from '@/utils/soundManager';
 
 interface SaveButtonProps {
   onSave: () => void;
@@ -12,6 +13,7 @@ export default function SaveButton({ onSave, disabled = false }: SaveButtonProps
   const [showSaved, setShowSaved] = useState(false);
 
   const handleSave = () => {
+    SoundManager.getInstance().play(SOUNDS.CLICK);
     onSave();
     setShowSaved(true);
     setTimeout(() => setShowSaved(false), 2000);
@@ -38,5 +40,7 @@ export default function SaveButton({ onSave, disabled = false }: SaveButtonProps
     </button>
   );
 }
+
+
 
 

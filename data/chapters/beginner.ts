@@ -71,28 +71,28 @@ export const beginnerChapters: StoryChapter[] = [
         const hasConsoleLog = code.includes('console.log');
         const hasMessage = /console\.log\s*\([^)]+\)/.test(code);
         const hasOutput = output.length > 0;
-        
+
         if (!hasConsoleLog) {
-          return { 
-            success: false, 
-            message: 'I can\'t hear you yet... try speaking through console.log' 
+          return {
+            success: false,
+            message: 'I can\'t hear you yet... try speaking through console.log'
           };
         }
         if (!hasMessage) {
-          return { 
-            success: false, 
-            message: 'Say something! Put your message inside console.log("your message")' 
+          return {
+            success: false,
+            message: 'Say something! Put your message inside console.log("your message")'
           };
         }
         if (!hasOutput) {
-          return { 
-            success: false, 
-            message: 'Hmm... I didn\'t hear anything. Make sure you close it with );' 
+          return {
+            success: false,
+            message: 'Hmm... I didn\'t hear anything. Make sure you close it with );'
           };
         }
-        return { 
-          success: true, 
-          message: 'I can hear you! My voice module is coming back online!' 
+        return {
+          success: true,
+          message: 'I can hear you! My voice module is coming back online!'
         };
       },
       hint: 'Type: console.log("Hello, Robot!");',
@@ -102,6 +102,7 @@ export const beginnerChapters: StoryChapter[] = [
     },
     repairAnimation: 'voice',
     distanceToHome: 1000,
+    backgroundImage: '/images/bg_garage.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -186,28 +187,28 @@ export const beginnerChapters: StoryChapter[] = [
         const hasValue = /powerLevel\s*=\s*100/.test(code);
         const hasLog = code.includes('console.log');
         const outputShows100 = output.some(line => line.includes('100'));
-        
+
         if (!hasVariable) {
-          return { 
-            success: false, 
-            message: 'Create the energy box! Type: let powerLevel' 
+          return {
+            success: false,
+            message: 'Create the energy box! Type: let powerLevel'
           };
         }
         if (!hasValue) {
-          return { 
-            success: false, 
-            message: 'Put energy in it! Add: = 100' 
+          return {
+            success: false,
+            message: 'Put energy in it! Add: = 100'
           };
         }
         if (!hasLog || !outputShows100) {
-          return { 
-            success: false, 
-            message: 'Show me the energy! Use: console.log(powerLevel)' 
+          return {
+            success: false,
+            message: 'Show me the energy! Use: console.log(powerLevel)'
           };
         }
-        return { 
-          success: true, 
-          message: 'Power cells charging! Energy level: 100%!' 
+        return {
+          success: true,
+          message: 'Power cells charging! Energy level: 100%!'
         };
       },
       hint: 'Type: let powerLevel = 100; console.log(powerLevel);',
@@ -217,6 +218,7 @@ export const beginnerChapters: StoryChapter[] = [
     },
     repairAnimation: 'power',
     distanceToHome: 900,
+    backgroundImage: '/images/bg_garage.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -302,32 +304,32 @@ export const beginnerChapters: StoryChapter[] = [
         const hasForLoop = /for\s*\(/.test(code);
         const hasCondition = /i\s*<\s*3/.test(code);
         const hasIncrement = /i\+\+/.test(code);
-        const outputCount = output.filter(line => 
-          line.toLowerCase().includes('moving') || 
+        const outputCount = output.filter(line =>
+          line.toLowerCase().includes('moving') ||
           line.toLowerCase().includes('arm')
         ).length;
-        
+
         if (!hasForLoop) {
-          return { 
-            success: false, 
-            message: 'I need a loop! Start with: for (let i = 0; i < 3; i++)' 
+          return {
+            success: false,
+            message: 'I need a loop! Start with: for (let i = 0; i < 3; i++)'
           };
         }
         if (!hasCondition || !hasIncrement) {
-          return { 
-            success: false, 
-            message: 'The loop needs: i < 3 and i++ to count' 
+          return {
+            success: false,
+            message: 'The loop needs: i < 3 and i++ to count'
           };
         }
         if (outputCount < 3) {
-          return { 
-            success: false, 
-            message: 'I need to see "Moving arm" 3 times! Check your console.log' 
+          return {
+            success: false,
+            message: 'I need to see "Moving arm" 3 times! Check your console.log'
           };
         }
-        return { 
-          success: true, 
-          message: 'My arms are working! I can repeat movements perfectly!' 
+        return {
+          success: true,
+          message: 'My arms are working! I can repeat movements perfectly!'
         };
       },
       hint: 'Type: for (let i = 0; i < 3; i++) { console.log("Moving arm"); }',
@@ -337,6 +339,7 @@ export const beginnerChapters: StoryChapter[] = [
     },
     repairAnimation: 'movement',
     distanceToHome: 800,
+    backgroundImage: '/images/bg_garage.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -425,38 +428,38 @@ export const beginnerChapters: StoryChapter[] = [
         const hasIf = /if\s*\(/.test(code);
         const hasCondition = /powerLevel\s*>\s*50/.test(code);
         const hasElse = code.includes('else');
-        const outputShowsStrong = output.some(line => 
-          line.toLowerCase().includes('strong') || 
+        const outputShowsStrong = output.some(line =>
+          line.toLowerCase().includes('strong') ||
           line.toLowerCase().includes("i'm strong")
         );
-        
+
         if (!hasIf) {
-          return { 
-            success: false, 
-            message: 'I need an if statement! Start with: if (powerLevel > 50)' 
+          return {
+            success: false,
+            message: 'I need an if statement! Start with: if (powerLevel > 50)'
           };
         }
         if (!hasCondition) {
-          return { 
-            success: false, 
-            message: 'Check if power is greater than 50: powerLevel > 50' 
+          return {
+            success: false,
+            message: 'Check if power is greater than 50: powerLevel > 50'
           };
         }
         if (!hasElse) {
-          return { 
-            success: false, 
-            message: 'What if power is low? Add: else { console.log("I need energy") }' 
+          return {
+            success: false,
+            message: 'What if power is low? Add: else { console.log("I need energy") }'
           };
         }
         if (!outputShowsStrong) {
-          return { 
-            success: false, 
-            message: 'I should say "I\'m strong" when power is above 50!' 
+          return {
+            success: false,
+            message: 'I should say "I\'m strong" when power is above 50!'
           };
         }
-        return { 
-          success: true, 
-          message: 'Decision chip repaired! I can choose paths again!' 
+        return {
+          success: true,
+          message: 'Decision chip repaired! I can choose paths again!'
         };
       },
       hint: 'Type: let powerLevel = 60; if (powerLevel > 50) { console.log("I\'m strong"); } else { console.log("I need energy"); }',
@@ -466,6 +469,7 @@ export const beginnerChapters: StoryChapter[] = [
     },
     repairAnimation: 'decision',
     distanceToHome: 700,
+    backgroundImage: '/images/bg_garage.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -556,37 +560,37 @@ export const beginnerChapters: StoryChapter[] = [
         const hasReturn = code.includes('return');
         const hasReturnTrue = /return\s+true/.test(code);
         const hasCall = /repairRobot\s*\(/.test(code);
-        const outputShowsRepairing = output.some(line => 
+        const outputShowsRepairing = output.some(line =>
           line.toLowerCase().includes('repairing')
         );
-        
+
         if (!hasFunction) {
-          return { 
-            success: false, 
-            message: 'I need a recipe! Create: function repairRobot()' 
+          return {
+            success: false,
+            message: 'I need a recipe! Create: function repairRobot()'
           };
         }
         if (!hasReturn || !hasReturnTrue) {
-          return { 
-            success: false, 
-            message: 'Tell me it worked! Add: return true' 
+          return {
+            success: false,
+            message: 'Tell me it worked! Add: return true'
           };
         }
         if (!outputShowsRepairing) {
-          return { 
-            success: false, 
-            message: 'Say what you\'re doing! Use console.log("Repairing...")' 
+          return {
+            success: false,
+            message: 'Say what you\'re doing! Use console.log("Repairing...")'
           };
         }
         if (!hasCall) {
-          return { 
-            success: false, 
-            message: 'Use the recipe! Call it: repairRobot()' 
+          return {
+            success: false,
+            message: 'Use the recipe! Call it: repairRobot()'
           };
         }
-        return { 
-          success: true, 
-          message: 'My thoughts are clear! I can remember everything now!' 
+        return {
+          success: true,
+          message: 'My thoughts are clear! I can remember everything now!'
         };
       },
       hint: 'Type: function repairRobot() { console.log("Repairing..."); return true; } repairRobot();',
@@ -596,6 +600,7 @@ export const beginnerChapters: StoryChapter[] = [
     },
     repairAnimation: 'brain',
     distanceToHome: 600,
+    backgroundImage: '/images/bg_garage.png',
     successDialogue: [
       {
         speaker: 'robot',
@@ -615,4 +620,6 @@ export const beginnerChapters: StoryChapter[] = [
     ],
   },
 ];
+
+
 

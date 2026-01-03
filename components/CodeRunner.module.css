@@ -20,14 +20,14 @@
 }
 
 .instruction {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  background: var(--glass-bg);
   border-radius: 16px;
   padding: 28px;
   margin-bottom: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #4a90e2;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   animation: fadeInUp 0.5s ease-out;
 }
@@ -37,6 +37,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -44,47 +45,53 @@
 }
 
 .instruction h3 {
+  font-family: var(--font-orbitron);
   font-size: 22px;
   margin-bottom: 16px;
-  color: #5ba0f2;
+  color: var(--primary);
   font-weight: 700;
-  letter-spacing: -0.5px;
-  text-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+  letter-spacing: 1px;
+  text-shadow: var(--neon-glow);
 }
 
 .goal {
+  font-family: var(--font-inter);
   font-size: 19px;
   line-height: 1.7;
-  color: #f0f0f0;
+  color: var(--text-primary);
   font-weight: 600;
   margin-bottom: 20px;
   letter-spacing: -0.2px;
 }
 
 .whyMatters {
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(74, 144, 226, 0.05) 100%);
-  border-left: 3px solid #5ba0f2;
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.1) 0%, rgba(0, 243, 255, 0.02) 100%);
+  border-left: 3px solid var(--primary);
   padding: 16px 20px;
   border-radius: 12px;
   margin-bottom: 24px;
-  border: 1px solid rgba(74, 144, 226, 0.2);
-  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 243, 255, 0.1);
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 4px 16px rgba(74, 144, 226, 0.1);
+
+  0%,
+  100% {
+    box-shadow: 0 4px 16px rgba(0, 243, 255, 0.1);
   }
+
   50% {
-    box-shadow: 0 4px 24px rgba(74, 144, 226, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 243, 255, 0.2);
   }
 }
 
 .whyText {
+  font-family: var(--font-inter);
   font-size: 16px;
   line-height: 1.7;
-  color: #b8d8ff;
+  color: var(--text-secondary);
   font-style: italic;
   margin: 0;
   font-weight: 500;
@@ -93,15 +100,16 @@
 .steps {
   margin-top: 24px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--glass-border);
 }
 
 .steps h4 {
+  font-family: var(--font-orbitron);
   font-size: 17px;
   margin-bottom: 16px;
-  color: #5ba0f2;
+  color: var(--primary);
   font-weight: 700;
-  letter-spacing: -0.3px;
+  letter-spacing: 0.5px;
 }
 
 .steps ol {
@@ -112,9 +120,10 @@
 }
 
 .steps li {
+  font-family: var(--font-inter);
   font-size: 16px;
   line-height: 1.9;
-  color: #e8e8e8;
+  color: var(--text-primary);
   margin-bottom: 12px;
   padding-left: 36px;
   position: relative;
@@ -129,15 +138,15 @@
   top: 0;
   width: 28px;
   height: 28px;
-  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--primary-blue) 100%);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+  color: #000;
+  box-shadow: 0 2px 8px rgba(0, 243, 255, 0.3);
 }
 
 .steps li:hover {
@@ -146,33 +155,34 @@
 }
 
 .editorContainer {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   animation: fadeInUp 0.5s ease-out 0.1s both;
 }
 
 .editorHeader {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
   padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .editorTitle {
   display: flex;
   align-items: center;
   gap: 12px;
+  font-family: var(--font-orbitron);
   font-size: 13px;
   font-weight: 700;
-  color: #5ba0f2;
+  color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
@@ -182,13 +192,13 @@
 }
 
 .editorBadge {
-  background: rgba(74, 144, 226, 0.2);
-  color: #5ba0f2;
+  background: rgba(0, 243, 255, 0.1);
+  color: var(--primary);
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 11px;
   font-weight: 600;
-  border: 1px solid rgba(74, 144, 226, 0.3);
+  border: 1px solid rgba(0, 243, 255, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -200,21 +210,23 @@
 }
 
 .monacoWrapper {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--glass-border);
 }
 
 .hintButton {
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.25) 0%, rgba(74, 144, 226, 0.15) 100%);
-  color: #5ba0f2;
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.15) 0%, rgba(0, 243, 255, 0.05) 100%);
+  color: var(--primary);
   padding: 8px 16px;
   border-radius: 8px;
+  font-family: var(--font-inter);
   font-size: 13px;
   font-weight: 600;
-  border: 1px solid rgba(74, 144, 226, 0.4);
+  border: 1px solid rgba(0, 243, 255, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 243, 255, 0.1);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .hintButton::before {
@@ -231,9 +243,9 @@
 }
 
 .hintButton:hover {
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.35) 0%, rgba(74, 144, 226, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.25) 0%, rgba(0, 243, 255, 0.15) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 243, 255, 0.2);
 }
 
 .hintButton:active {
@@ -247,6 +259,7 @@
   margin: 16px;
   border-radius: 12px;
   color: #ffd700;
+  font-family: var(--font-inter);
   font-size: 15px;
   border: 1px solid rgba(243, 156, 18, 0.3);
   box-shadow: 0 4px 16px rgba(243, 156, 18, 0.1);
@@ -258,6 +271,7 @@
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -274,18 +288,21 @@
 
 .runButton {
   flex: 1;
-  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-  color: white;
+  background: linear-gradient(135deg, #00ff88 0%, #00b862 100%);
+  color: #000;
   padding: 16px 28px;
   border-radius: 12px;
+  font-family: var(--font-orbitron);
   font-size: 17px;
   font-weight: 700;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 16px rgba(0, 255, 136, 0.4),
-              0 0 0 0 rgba(0, 255, 136, 0);
+    0 0 0 0 rgba(0, 255, 136, 0);
   position: relative;
   overflow: hidden;
-  letter-spacing: 0.3px;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
 }
 
 .runButton::before {
@@ -304,12 +321,12 @@
 .runButton:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 255, 136, 0.5),
-              0 0 0 4px rgba(0, 255, 136, 0.1);
+    0 0 0 4px rgba(0, 255, 136, 0.1);
 }
 
 .runButton:active:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.4);
+  box-shadow: 0 4px 12px rgba(188, 19, 254, 0.4);
 }
 
 .runButton:active:not(:disabled)::before {
@@ -326,8 +343,8 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: #000;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin-right: 8px;
@@ -343,15 +360,17 @@
 .resetButton {
   flex: 1;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
-  color: #e8e8e8;
+  color: var(--text-primary);
   padding: 16px 28px;
   border-radius: 12px;
+  font-family: var(--font-orbitron);
   font-size: 17px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(10px);
-  letter-spacing: 0.3px;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .resetButton:hover:not(:disabled) {
@@ -362,12 +381,12 @@
 }
 
 .outputContainer {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   animation: fadeInUp 0.4s ease-out;
   scroll-margin-top: 20px;
@@ -376,15 +395,16 @@
 }
 
 .outputContainer:focus {
-  outline: 2px solid rgba(74, 144, 226, 0.5);
+  outline: 2px solid rgba(0, 243, 255, 0.5);
   outline-offset: 4px;
   border-radius: 8px;
 }
 
 .outputHeader {
+  font-family: var(--font-orbitron);
   font-size: 13px;
   font-weight: 700;
-  color: #5ba0f2;
+  color: var(--primary);
   margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -399,21 +419,21 @@
 }
 
 .output {
-  background: linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
+  background: #0a0a1a;
   border-radius: 12px;
   padding: 16px;
   font-family: 'Fira Code', 'Courier New', Courier, monospace;
   font-size: 15px;
   min-height: 50px;
   margin-bottom: 16px;
-  border: 1px solid rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 243, 255, 0.2);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .outputLine {
-  color: #00ff88;
+  color: var(--primary);
   margin-bottom: 6px;
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
   font-weight: 500;
   animation: fadeIn 0.3s ease-out;
 }
@@ -422,6 +442,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -446,14 +467,25 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 .validation {
   padding: 20px;
   border-radius: 12px;
+  font-family: var(--font-inter);
   font-size: 17px;
   font-weight: 600;
   text-align: left;
@@ -469,7 +501,7 @@
   border: 2px solid #00ff88;
   color: #00ffaa;
   box-shadow: 0 8px 32px rgba(0, 255, 136, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   animation: successPulse 0.6s ease-out;
 }
 
@@ -478,9 +510,11 @@
     transform: scale(0.95);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.02);
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -499,6 +533,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -516,13 +551,13 @@
 }
 
 .editor::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .editor::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5ba0f2 0%, #4a90e2 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
 }
 
 @media (max-width: 768px) {
@@ -556,5 +591,15 @@
   .runButton,
   .resetButton {
     width: 100%;
+    padding: 14px 20px;
+    /* Larger touch target */
+    font-size: 16px;
   }
+
+  .editorContainer {
+    margin-bottom: 16px;
+  }
+
+  /* Adjust editor height via global override or specific class if possible, 
+     but Monaco height is inline style. We can try to limit container height. */
 }

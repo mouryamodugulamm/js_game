@@ -109,15 +109,51 @@ export default function PreStoryPage() {
 
   return (
     <div className={styles.container}>
+      <Image
+        src="/images/bg_garage.png"
+        alt="Background"
+        fill
+        className={styles.backgroundImage}
+        priority
+      />
+      <div className={styles.overlay} />
       <div className={styles.content}>
         <div className={styles.leftPanel}>
           <div className={styles.spaceScene}>
-            <div className={styles.stars}></div>
-            <div className={styles.planet}></div>
-            <Robot 
-              emotion={currentEmotion}
-              isRepairing={false}
-            />
+            {dialogueIndex === 0 ? (
+              <div className={styles.rocketContainer}>
+                <Image
+                  src="/images/rocket_image.png"
+                  alt="Rocket"
+                  width={200}
+                  height={300}
+                  className={styles.rocketImage}
+                  priority
+                />
+              </div>
+            ) : dialogueIndex === 1 ? (
+              <div className={styles.robotKidContainer}>
+                <Robot
+                  emotion={currentEmotion}
+                  isRepairing={false}
+                />
+                <div className={styles.kidContainer}>
+                  <Image
+                    src="/images/kid_confused.png"
+                    alt="Kid"
+                    width={120}
+                    height={180}
+                    className={styles.kidImage}
+                    priority
+                  />
+                </div>
+              </div>
+            ) : (
+              <Robot
+                emotion={currentEmotion}
+                isRepairing={false}
+              />
+            )}
           </div>
         </div>
 
@@ -130,19 +166,19 @@ export default function PreStoryPage() {
                 <SaveButton onSave={handleSave} />
               </div>
             </div>
-            <StoryDialogue 
+            <StoryDialogue
               dialogues={preStoryDialogues}
               onComplete={handleDialogueComplete}
               initialIndex={dialogueIndex}
               onIndexChange={handleDialogueIndexChange}
             />
-            
+
             {showContinue && (
               <div className={styles.continueSection}>
                 <div className={styles.crashEffect}>
                   <div className={styles.crashText}>💥 CRASH! 💥</div>
                 </div>
-                <button 
+                <button
                   className={styles.continueButton}
                   onClick={handleContinue}
                 >

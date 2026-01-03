@@ -8,8 +8,8 @@
 }
 
 .robot {
-  width: 200px;
-  height: 300px;
+  width: 300px;
+  height: 450px;
   position: relative;
   transition: all 0.3s ease;
   display: flex;
@@ -26,9 +26,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -41,9 +44,12 @@
 }
 
 @keyframes repairGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.3));
   }
+
   50% {
     filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.8));
   }
@@ -82,8 +88,8 @@
 
 @media (max-width: 768px) {
   .robot {
-    width: 150px;
-    height: 225px;
+    width: 180px;
+    height: 270px;
   }
 
   .head {

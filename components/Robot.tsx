@@ -33,15 +33,15 @@ export default function Robot({ emotion = 'neutral', isRepairing = false, repair
   const getRobotImage = () => {
     switch (emotion) {
       case 'happy':
-        return '/images/robot-happy.svg';
+        return '/images/robo_neutral.png';
       case 'sad':
-        return '/images/robot-sad.svg';
+        return '/images/robo_broken.png';
       case 'excited':
-        return '/images/robot-excited.svg';
+        return '/images/robo_neutral.png';
       case 'confused':
-        return '/images/robot-confused.svg';
+        return '/images/robo_confused.png';
       default:
-        return '/images/robot-neutral.svg';
+        return '/images/robo_neutral.png';
     }
   };
 
@@ -51,17 +51,17 @@ export default function Robot({ emotion = 'neutral', isRepairing = false, repair
         <Image
           src={getRobotImage()}
           alt="Robot"
-          width={200}
-          height={300}
+          width={300}
+          height={450}
           className={styles.robotImage}
           priority
         />
       </div>
-      
+
       {isRepairing && repairType && (
         <div className={styles.repairOverlay}>
           <div className={styles.repairProgress}>
-            <div 
+            <div
               className={styles.progressBar}
               style={{ width: `${repairProgress}%` }}
             ></div>
