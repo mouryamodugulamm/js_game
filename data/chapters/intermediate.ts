@@ -435,9 +435,16 @@ export const intermediateChapters: StoryChapter[] = [
         const hasFilter = /\.filter\s*\(/.test(code);
         const hasArrow = /=>/.test(code);
         const hasGreaterThan = />\s*10/.test(code);
-        const outputShowsFiltered = output.some(line =>
-          (line.includes('15') && line.includes('20')) && !line.includes('1') && !line.includes('5')
-        );
+      const outputShowsFiltered = output.some(line => {
+        const numbers = (line.match(/\d+/g) || []).map(Number);
+        if (numbers.length === 0) {
+          return false;
+        }
+        const has15 = numbers.includes(15);
+        const has20 = numbers.includes(20);
+        const hasSmallOrTen = numbers.some(num => num <= 10);
+        return has15 && has20 && !hasSmallOrTen;
+      });
 
         if (!hasFilter) {
           return {

@@ -63,7 +63,7 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
     setIsRunning(true);
 
     // Small delay for visual feedback
-    setTimeout(() => {
+    setTimeout(async () => {
       // Capture console.log output
       const logs: string[] = [];
       const originalLog = console.log;
@@ -77,7 +77,13 @@ export default function CodeRunner({ challenge, onSuccess, onCodeChange, initial
       try {
         // Create a safe execution context
         const func = new Function(code);
-        func();
+        const executionResult = func();
+        if (executionResult && typeof (executionResult as Promise<unknown>).then === 'function') {
+          await executionResult;
+        }
+        if (/setTimeout\s*\(/.test(code)) {
+          await new Promise(resolve => setTimeout(resolve, 1100));
+        }
 
         // Restore console.log
         console.log = originalLog;
